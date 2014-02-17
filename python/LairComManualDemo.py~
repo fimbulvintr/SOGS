@@ -1,0 +1,18 @@
+#Manual control demo of the LairCom library.
+from LairCom0_4 import LairCom
+import time
+
+try:
+    lc=LairCom()
+    lc.clearControllers()
+    lc.loadController(MCGas())
+    while True:
+        time.sleep(1)
+        lc.tick()
+        lc.req("gas")
+        v=lc.get("gas")
+        if True:
+            print("Voltages "+str(v))
+            v=False
+except KeyboardInterrupt:
+    Print("Beendet")
